@@ -7,6 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Login from "./page/login";
 import Manager from "./page/manager/in-manager";
 import TodoList from "./page/manager/to-do-list";
+import Checklist from "./page/manager/check-to-do";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
             <Route path="/" element={<Login />} />
             <Route path="/manager" element={<Manager />} />
             <Route path="/manager/createtodolist" element={<TodoList/>}/>
+            <Route path="/manager/checklist" element={<Checklist/>}/>
           </Routes>
         </Router>
       </PersistGate>
