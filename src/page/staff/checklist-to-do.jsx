@@ -1,8 +1,8 @@
 
-import CardCheck from "../../components/cardcheck";
+import CardCheckList from "../../components/cardchecklist";
 import InfoUser from "../../components/info-user";
 
-export default function Checklist(){
+export default function CheckFromStaff(){
 
     return(
         <>
@@ -27,7 +27,7 @@ export default function Checklist(){
         
                 </div>
 
-                <CardCheck/>
+                <CardCheckList/>
 
                 <div className="text-center">
                     <div>

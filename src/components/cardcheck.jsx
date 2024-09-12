@@ -1,3 +1,7 @@
+import { Checkbox } from "@mui/material"
+import { green } from "@mui/material/colors"
+
+
 const items = [
     {
         id: 1,
@@ -5,7 +9,7 @@ const items = [
         deskripsi: "pasang jedela atas lantai 2 dengan hati hati",
         gambar: "",
         prioritas: "",
-        checked: true // Tambahkan properti checked
+        check: true // Tambahkan properti checked
     },
     {
         id: 2,
@@ -13,9 +17,19 @@ const items = [
         deskripsi: "pasang pintu depan lantai 1",
         gambar: "",
         prioritas: "",
-        checked: false // Tambahkan properti checked
+        check: false // Tambahkan properti checked
     }
 ]
+
+// menghitung nilai check
+export const checkCount = items.reduce((count, item) => {
+    if (item.check) {
+        count.true += 1;
+    } else {
+        count.false += 1;
+    }
+    return count;
+}, { true: 0, false: 0 });
 
 export default function CardCheck() {
     return (
@@ -26,10 +40,14 @@ export default function CardCheck() {
                         <div className="flex">
                             <div className="flex items-center">
                                 {/* Tampilkan gambar berdasarkan status checked */}
-                                <img
-                                    src={item.checked ? "https://cdn-icons-png.flaticon.com/512/5709/5709755.png" : "https://icons.veryicon.com/png/o/miscellaneous/questionnaire-icon/unchecked-10.png"}
-                                    alt={item.checked ? "Checked" : "Unchecked"}
-                                    className="w-8 h-8"
+                                <Checkbox
+                                    disabled checked={item.check}
+                                    sx={{
+                                        color: green[800],
+                                        '&.Mui-checked': {
+                                          color: green[600],
+                                        },
+                                      }}
                                 />
                             </div>
                             <div className="ml-4">

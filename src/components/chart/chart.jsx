@@ -3,12 +3,13 @@ import { Doughnut } from 'react-chartjs-2';
 import { Box, Typography } from '@mui/material';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { getProgressText } from './progress';
+import { checkCount } from '../cardcheck';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function ChartProgress() {
  
-        const originalData = [9, 1];
+        const originalData = [checkCount.true, checkCount.false];
 
         const total = originalData.reduce((acc, value) => acc + value, 0);
 

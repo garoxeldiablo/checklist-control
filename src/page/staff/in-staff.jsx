@@ -2,7 +2,7 @@ import InfoUser from "../../components/info-user"
 import Attention from "../../components/attention"
 import { useNavigate } from "react-router-dom"
 
-export default function Manager(){
+export default function Instaff(){
 
     const navigate = useNavigate();
 
@@ -21,15 +21,7 @@ export default function Manager(){
                                 <div className="flex justify-center">
                                     <img className="w-28 m-2" src="https://cdn-icons-png.flaticon.com/256/3804/3804348.png" alt="add do" />
                                 </div>
-                                <p>Buat To-do-list</p>
-                            </button>
-                        </div>
-                        <div className="rounded-md shadow text-center w-36 p-3">
-                            <button onClick={()=>navigate('/checklist')}>
-                                <div className="flex justify-center">
-                                    <img className="w-28 m-2" src="https://cdn-icons-png.flaticon.com/512/2822/2822678.png" alt="check" />
-                                </div>
-                                <p>Cek do-list staff</p>
+                                <p>Cek to-do-list dari manager</p>
                             </button>
                         </div>
                     </div>

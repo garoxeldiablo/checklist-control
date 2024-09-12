@@ -1,9 +1,13 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import InfoUser from "../../components/info-user";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function TodoList(){
+
+    const navigate = useNavigate();
+
     const [currentTime, setCurrentTime] = useState(new Date());
 
     useEffect(() => {
@@ -106,7 +110,7 @@ export default function TodoList(){
             </div>
             </div>
             <div className="mt-6 flex items-center justify-end gap-x-6">
-                <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+                <button onClick={()=>navigate(-1)} type="button" className="text-sm font-semibold leading-6 text-gray-900">
                 Cancel
                 </button>
                 <button

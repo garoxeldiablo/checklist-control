@@ -8,6 +8,9 @@ import Login from "./page/login";
 import Manager from "./page/manager/in-manager";
 import TodoList from "./page/manager/to-do-list";
 import Checklist from "./page/manager/check-to-do";
+import Myprofile from "./page/profile";
+import Instaff from "./page/staff/in-staff";
+import CheckFromStaff from "./page/staff/checklist-to-do";
 
 export default function App() {
   return (
@@ -17,8 +20,11 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/manager" element={<Manager />} />
-            <Route path="/manager/createtodolist" element={<TodoList/>}/>
-            <Route path="/manager/checklist" element={<Checklist/>}/>
+            <Route path="/staff" element={<Instaff />} />
+            <Route path="/create" element={<TodoList/>}/>
+            <Route path="/checklist" element={<Checklist/>}/>
+            <Route path="/staffcheck" element={<CheckFromStaff/>}/>
+            <Route path="/profile" element={<Myprofile/>}/>
           </Routes>
         </Router>
       </PersistGate>
