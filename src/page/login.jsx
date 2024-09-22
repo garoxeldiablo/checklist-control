@@ -16,31 +16,44 @@ export default function Login() {
         
         // Contoh request ke server API (misalnya, menggunakan fetch atau axios)
         try {
-            const response = await axios.post("http://localhost:5000/auth", {
+            const response = await axios.post(import.meta.env.VITE_API_AUTH, {
               username,
               password,
             });
-      
+          
             // Jika login berhasil
             if (response.status === 200) {
-              // Simpan token di localStorage (atau sessionStorage)
-              localStorage.setItem("token", response.data.token);
-              localStorage.setItem("username", response.data.username)
-      
-              // Redirect ke halaman dashboard
-              dispatch(login(response))
-              navigate("/dashboard");
-              window.location.reload();
+              // Simpan token dan informasi lain di localStorage (atau sessionStorage)
+              localStorage.setItem("role", response.data.roles)
+              localStorage.setItem("user", response.data.username)
+
+          
+              // Dispatch ke Redux store (hanya data yang dibutuhkan)
+              dispatch(
+                login({
+                  token: response.data.token,
+                  username: response.data.username,
+                  role: response.data.role,
+                })
+              );
+          
+              // Redirect ke halaman yang sesuai berdasarkan peran
+              if (response.data.roles === "Manager") {
+                navigate("/manager");
+              } else if (response.data.roles === "Staff") {
+                navigate("/staff");
+              }
             }
-          } catch(e) {
-            if (e.response && e.response.status === 400 || 404) {
-                // Jika username atau password salah, tampilkan alert
-                window.alert("Username atau password salah.");
-              } else {
-                // Tangani error lain
-                console.log("Terjadi kesalahan", e);
+          } catch (e) {
+            if (e.response && (e.response.status === 400 || e.response.status === 404)) {
+              // Jika username atau password salah, tampilkan alert
+              window.alert("Username atau password salah.");
+            } else {
+              // Tangani error lain
+              console.log("Terjadi kesalahan", e);
+            }
           }
-        }
+          
     }
 
     return (

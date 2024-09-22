@@ -6,7 +6,6 @@ const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
 
 // Action Creators
-// Action Creators
 export const login = (accessToken) => ({ type: LOGIN, payload: {accessToken} });
 export const logout = () => ({ type: LOGOUT });
 

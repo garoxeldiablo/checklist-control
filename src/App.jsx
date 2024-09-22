@@ -2,6 +2,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {store, persistor} from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
+import PrivateRoute from "./hooks/privateroute";
 
 
 import Login from "./page/login";
@@ -19,8 +20,35 @@ export default function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/manager" element={<Manager />} />
+            {/* <Route path="/manager" element={<Manager />} /> */}
             <Route path="/staff" element={<Instaff />} />
+
+            {/* Proteksi Halaman Manager */}
+            <Route
+              path="/manager"
+              element={
+                <PrivateRoute role="Manager">
+                  <Manager />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/create"
+              element={
+                <PrivateRoute role="Manager">
+                  <TodoList />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/checklist"
+              element={
+                <PrivateRoute role="Manager">
+                  <Checklist />
+                </PrivateRoute>
+              }
+            />
+
             <Route path="/create" element={<TodoList/>}/>
             <Route path="/checklist" element={<Checklist/>}/>
             <Route path="/staffcheck" element={<CheckFromStaff/>}/>
