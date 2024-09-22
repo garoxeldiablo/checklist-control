@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { useR, rolE } from "../store/getItem"
 
 export default function InfoUser(){
 
@@ -8,8 +9,8 @@ export default function InfoUser(){
         <>
             <div className="flex justify-between">
                 <div>
-                    <h1 className="text-2xl font-semibold">Hai, Username</h1>
-                    <p className="italic">Manager</p>
+                    <h1 className="text-2xl font-semibold">Hai, {useR} !</h1>
+                    <p className="italic">{rolE}</p>
                 </div>
                 <div>
                     <button onClick={()=>navigate('/profile')}>

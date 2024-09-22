@@ -26,21 +26,21 @@ export default function Login() {
               // Simpan token dan informasi lain di localStorage (atau sessionStorage)
               localStorage.setItem("role", response.data.roles)
               localStorage.setItem("user", response.data.username)
+              localStorage.setItem("accessToken", response.data.accessToken)
 
           
               // Dispatch ke Redux store (hanya data yang dibutuhkan)
               dispatch(
                 login({
-                  token: response.data.token,
                   username: response.data.username,
-                  role: response.data.role,
+                  role: response.data.roles,
                 })
               );
           
               // Redirect ke halaman yang sesuai berdasarkan peran
               if (response.data.roles === "Manager") {
                 navigate("/manager");
-              } else if (response.data.roles === "Staff") {
+              } else if (response.data.roles === "staff") {
                 navigate("/staff");
               }
             }

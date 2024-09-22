@@ -1,5 +1,6 @@
 import { PhotoIcon } from "@heroicons/react/24/solid"
 import { useNavigate } from "react-router-dom"
+import { useR, rolE,acT } from "../store/getItem";
 
 export default function Myprofile(){
 
@@ -13,9 +14,9 @@ export default function Myprofile(){
                         <img className="h-20 w-20" src="/icon/profile2.png" alt="" />
                     </div>
                     <div className="text-center">
-                        <h1 className="text-2xl font-semibold">Username</h1>
-                        <p className="text-sm">Manager</p>
-                        <p className="text-gray-500 italic text-xs">Id : 0063342333</p>
+                        <h1 className="text-2xl font-semibold">{useR}</h1>
+                        <p className="text-sm">{rolE}</p>
+                        <p className="text-gray-500 italic text-xs">Id : {acT}</p>
                     </div>
                 </div>
             </div>

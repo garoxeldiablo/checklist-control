@@ -20,14 +20,12 @@ export default function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Login />} />
-            {/* <Route path="/manager" element={<Manager />} /> */}
-            <Route path="/staff" element={<Instaff />} />
 
             {/* Proteksi Halaman Manager */}
             <Route
               path="/manager"
               element={
-                <PrivateRoute role="Manager">
+                <PrivateRoute requiredRole="Manager">
                   <Manager />
                 </PrivateRoute>
               }
@@ -35,7 +33,7 @@ export default function App() {
             <Route
               path="/create"
               element={
-                <PrivateRoute role="Manager">
+                <PrivateRoute requiredRole="Manager">
                   <TodoList />
                 </PrivateRoute>
               }
@@ -43,16 +41,32 @@ export default function App() {
             <Route
               path="/checklist"
               element={
-                <PrivateRoute role="Manager">
+                <PrivateRoute requiredRole="Manager">
                   <Checklist />
                 </PrivateRoute>
               }
             />
 
-            <Route path="/create" element={<TodoList/>}/>
-            <Route path="/checklist" element={<Checklist/>}/>
-            <Route path="/staffcheck" element={<CheckFromStaff/>}/>
-            <Route path="/profile" element={<Myprofile/>}/>
+            {/* Proteksi Halaman Staff */}
+            <Route
+              path="/staff"
+              element={
+                <PrivateRoute requiredRole="staff">
+                  <Instaff />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/staffcheck"
+              element={
+                <PrivateRoute requiredRole="staff">
+                  <CheckFromStaff />
+                </PrivateRoute>
+              }
+            />
+
+            {/* Halaman Profile bisa diakses oleh semua peran */}
+            <Route path="/profile" element={<Myprofile />} />
           </Routes>
         </Router>
       </PersistGate>
