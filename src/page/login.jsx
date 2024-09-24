@@ -26,7 +26,7 @@ export default function Login() {
               // Simpan token dan informasi lain di localStorage (atau sessionStorage)
               localStorage.setItem("role", response.data.roles)
               localStorage.setItem("user", response.data.username)
-              localStorage.setItem("accessToken", response.data.accessToken)
+              localStorage.setItem("idUser", response.data.userId)
 
           
               // Dispatch ke Redux store (hanya data yang dibutuhkan)
@@ -43,6 +43,7 @@ export default function Login() {
               } else if (response.data.roles === "staff") {
                 navigate("/staff");
               }
+              window.location.reload();
             }
           } catch (e) {
             if (e.response && (e.response.status === 400 || e.response.status === 404)) {
