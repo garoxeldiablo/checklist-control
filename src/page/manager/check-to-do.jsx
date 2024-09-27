@@ -3,7 +3,6 @@ import CardCheck from "../../components/cardcheck";
 import InfoUser from "../../components/info-user";
 
 export default function Checklist(){
-
     return(
         <>
             <div className="">
