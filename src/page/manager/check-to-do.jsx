@@ -1,8 +1,9 @@
-
+import { useNavigate } from "react-router-dom";
 import CardCheck from "../../components/cardcheck";
 import InfoUser from "../../components/info-user";
 
 export default function Checklist(){
+    const navigate = useNavigate();
     return(
         <>
             <div className="">

@@ -12,6 +12,7 @@ import Checklist from "./page/manager/check-to-do";
 import Myprofile from "./page/profile";
 import Instaff from "./page/staff/in-staff";
 import CheckFromStaff from "./page/staff/checklist-to-do";
+import Report from "./page/manager/report";
 
 export default function App() {
   return (
@@ -43,6 +44,15 @@ export default function App() {
               element={
                 <PrivateRoute requiredRole="Manager">
                   <Checklist />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/report"
+              element={
+                <PrivateRoute requiredRole="Manager">
+                  <Report />
                 </PrivateRoute>
               }
             />
